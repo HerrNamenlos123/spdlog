@@ -58,6 +58,9 @@ project "spdlog"
     SPDLOG_LINK_DIRS = {}
     appendTable(SPDLOG_LINK_DIRS, _SCRIPT_DIR .. "/bin/%{cfg.buildcfg}/")
 
-    SPDLOG_LINKS = { "spdlog", "pthread" }
+    SPDLOG_LINKS = { "spdlog" }
+    if os.host() ~= "windows" then
+        appendTable(SPDLOG_LINKS, "pthread")
+    end
 
     SPDLOG_DEFINES = { "SPDLOG_COMPILED_LIB" }
