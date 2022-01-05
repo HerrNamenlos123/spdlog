@@ -10,10 +10,11 @@ end
 project "spdlog"
     kind "StaticLib"
     language "C++"
+    cppdialect "C++17"
     staticruntime "on"
     location "build"
     targetdir "bin/%{cfg.buildcfg}"
-    --system "Windows"
+    targetname "%{prj.name}"
     
     filter { "platforms:x86" }
         architecture "x86"
